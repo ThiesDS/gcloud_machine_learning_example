@@ -13,7 +13,9 @@ Adoption of iris example with larger dataset which also covers
 
 ## Useful resources
 
+For general ml (using scikit-learn):
+
 1. First steps in the official documentation, [here](https://cloud.google.com/ml-engine/docs/scikit/getting-started-training)
-2. More detailed manuals in the official documentation, [here](https://cloud.google.com/ml-engine/docs/tensorflow/how-tos)
+2. More detailed manuals in the official documentation, [here](https://cloud.google.com/ml-engine/docs/scikit/how-tos)
 3. Sample code in the official GoogleCloudPlatform github repo, [here](https://github.com/GoogleCloudPlatform/cloudml-samples)
-4. Tutorial on hyperparameter tunining with sklearn on towardsdatascience blogpost, [here](https://towardsdatascience.com/hyperparameter-tuning-on-google-cloud-platform-with-scikit-learn-7d6155195efb)
+4. Tutorial on hyperparameter tunining with sklearn in towardsdatascience blogpost, [here](https://towardsdatascience.com/hyperparameter-tuning-on-google-cloud-platform-with-scikit-learn-7d6155195efb)
