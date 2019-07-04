@@ -1,0 +1,25 @@
+# hyperparam.yaml
+# By default uses bayesian hyperparameter optimization
+trainingInput:
+  hyperparameters:
+    goal: MINIMIZE
+    maxTrials: 30
+    maxParallelTrials: 5
+    hyperparameterMetricTag: mean_squared_error
+    enableTrialEarlyStopping: TRUE 
+    params:
+    - parameterName: n_estimators
+      type: INTEGER
+      discreteValues: [
+          200,
+          400,
+          600,
+          800,
+          1000,
+          1200,
+          1400
+          ]
+      # Alternative:
+      #minValue: 200
+      #maxValue: 1400
+      #scaleType: UNIT_LINEAR_SCALE
