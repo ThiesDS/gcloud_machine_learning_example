@@ -1,6 +1,17 @@
-## Flights example for experimentation with gcloud ai-platform
+## Teplate for training a random forest regressor with hyperparameter tuning on gcloud ai-platform
 
-Adoption of iris example with larger dataset which also covers 
+### Usage
 
-* How to tune hyperparameters using gcloud ai-platform
-* Performance comparison of model training using gcloud ai-platform vs. local machine
+1. Pull repository
+2. Create gcs-bucket with training data (structure see below)
+3. Edit environmental variables in `submit_job.sh`:
+	* Set `BUCKET_NAME` variable 
+	* Set `SCALE_TIER` variable
+4. execute with `sh submit_job.sh`
+
+
+### Required structure of gcs-bucket
+
+|- data
+	|- data_train_features.csv
+	|- data_train_labels.csv
