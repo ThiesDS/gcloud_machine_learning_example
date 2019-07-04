@@ -64,8 +64,8 @@ features_onehot_train, features_onehot_test, labels_train, labels_test = train_t
 
 # Define the model
 rf = RandomForestRegressor(
-	n_estimators = args.n_estimators, 
-	random_state = 42)
+    n_estimators = args.n_estimators, 
+    random_state = 42)
 
 # Train the model
 rf.fit(features_onehot_train, labels_train)
