@@ -49,11 +49,11 @@ blob_features.download_to_filename('data_train_features.csv')
 blob_labels.download_to_filename('data_train_labels.csv')
 
 # Load data from .csv (previously downloaded from gcs bucket)
-with open('./data_train_features.csv', 'r') as df_train_features:
-    features = pd.read_csv(df_train_features)
+#with open('./data_train_features.csv', 'r') as df_train_features:
+features = pd.read_csv(df_train_features)
 
-with open('./data_train_labels.csv', 'r') as df_train_labels:
-    labels = pd.read_csv(df_train_labels)
+#with open('./data_train_labels.csv', 'r') as df_train_labels:
+labels = pd.read_csv(df_train_labels)
 
 # Preprocess data (one-hot-encoding of categorical features)
 features_onehot = pd.get_dummies(features)
