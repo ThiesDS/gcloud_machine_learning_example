@@ -11,5 +11,5 @@ trainingInput:
     - parameterName: n_estimators
       type: INTEGER
       minValue: 100
-      maxValue: 150
+      maxValue: 1400
       scaleType: UNIT_LINEAR_SCALE

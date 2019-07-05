@@ -26,5 +26,5 @@ gcloud ai-platform jobs submit training $JOB_NAME \
   --region $REGION \
   --runtime-version=$RUNTIME_VERSION \
   --python-version=$PYTHON_VERSION \
-  --scale-tier $SCALE_TIER \
+  --scale-tier $SCALE_TIER
   --config $HPTUNING_CONFIG

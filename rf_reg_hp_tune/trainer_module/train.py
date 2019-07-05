@@ -4,7 +4,6 @@ import os
 import sys
 import pandas as pd
 import hypertune
-from datetime import datetime
 from google.cloud import storage
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
@@ -92,7 +91,8 @@ model_filename = 'model.joblib'
 joblib.dump(rf, model_filename)
 
 # Upload the model to GCS
-bucket = storage.Client().bucket(bucket_id)
+bucket_path=job_dir+datetime.datetime.now().strftime('_%Y%m%d_%H%M%S')
+#bucket = storage.Client().bucket(bucket_id)
 blob = bucket.blob('{}/{}'.format(
     bucket_path,
     model_filename))
