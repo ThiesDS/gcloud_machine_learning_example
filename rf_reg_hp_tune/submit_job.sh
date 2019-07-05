@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 # Customizable environmental variables
 BUCKET_NAME="zd-ai-platform-performanceattribution-training-bucket"
-SCALE_TIER=BASIC
+SCALE_TIER=STANDARD_1
 
 
 
@@ -16,6 +16,7 @@ MAIN_TRAINER_MODULE="trainer_module.train"
 REGION="europe-west1"
 RUNTIME_VERSION=1.13
 PYTHON_VERSION=3.5
+HPTUNING_CONFIG="hp_config.yaml"
 
 # Send training job to the cloud
 gcloud ai-platform jobs submit training $JOB_NAME \
@@ -25,4 +26,5 @@ gcloud ai-platform jobs submit training $JOB_NAME \
   --region $REGION \
   --runtime-version=$RUNTIME_VERSION \
   --python-version=$PYTHON_VERSION \
-  --scale-tier $SCALE_TIER
+  --scale-tier $SCALE_TIER \
+  --config $HPTUNING_CONFIG

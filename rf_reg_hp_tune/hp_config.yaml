@@ -10,16 +10,6 @@ trainingInput:
     params:
     - parameterName: n_estimators
       type: INTEGER
-      discreteValues: [
-          200,
-          400,
-          600,
-          800,
-          1000,
-          1200,
-          1400
-          ]
-      # Alternative:
-      #minValue: 200
-      #maxValue: 1400
-      #scaleType: UNIT_LINEAR_SCALE
+      minValue: 100
+      maxValue: 150
+      scaleType: UNIT_LINEAR_SCALE

@@ -50,16 +50,17 @@ blob_labels.download_to_filename('data_train_labels.csv')
 
 # Load data from .csv (previously downloaded from gcs bucket)
 #with open('./data_train_features.csv', 'r') as df_train_features:
-features = pd.read_csv(df_train_features)
+features = pd.read_csv('data_train_features.csv')
 
 #with open('./data_train_labels.csv', 'r') as df_train_labels:
-labels = pd.read_csv(df_train_labels)
+labels = pd.read_csv('data_train_labels.csv')
 
 # Preprocess data (one-hot-encoding of categorical features)
 features_onehot = pd.get_dummies(features)
 
-# Prepare feature dataset for sklearn (2D arrays as input)
+# Prepare feature dataset for sklearn (2D/1D arrays as input)
 features_onehot = features_onehot.values
+labels = labels.values.ravel()
 
 # Train/Test split for hyperparamter tuning process
 features_onehot_train, features_onehot_test, labels_train, labels_test = train_test_split(features_onehot, labels, test_size=0.20)
