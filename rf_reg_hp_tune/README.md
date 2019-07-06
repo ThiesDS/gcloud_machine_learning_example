@@ -18,6 +18,6 @@ Alternative II:
 
 ### Required structure of gcs-bucket
 
-|- data\
-	|- data_train_features.csv
-	|- data_train_labels.csv
+|- data \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- data_train_features.csv \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- data_train_labels.csv
