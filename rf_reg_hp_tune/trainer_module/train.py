@@ -91,7 +91,7 @@ model_filename = 'model.joblib'
 joblib.dump(rf, model_filename)
 
 # Upload the model to GCS
-bucket_path=job_dir+datetime.datetime.now().strftime('_%Y%m%d_%H%M%S')
+#bucket_path=job_dir+datetime.datetime.now().strftime('_%Y%m%d_%H%M%S')
 #bucket = storage.Client().bucket(bucket_id)
 blob = bucket.blob('{}/{}'.format(
     bucket_path,
