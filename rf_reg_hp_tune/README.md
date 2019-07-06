@@ -4,16 +4,6 @@
 
 1. Pull repository
 2. Create gcs-bucket with training data (structure see below)
-
-Alternative I
-
-3. Edit environmental variables in `submit_job.sh`:
-	* Set `BUCKET_NAME` variable 
-	* Set `SCALE_TIER` variable
-4. execute with `sh submit_job.sh`
-
-Alternative II:
-
 3. Execute `sh submit_job BUCKET_NAME SCALE_TIER`
 
 ### Required structure of gcs-bucket

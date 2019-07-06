@@ -2,7 +2,7 @@
 
 # Customizable environmental variables
 BUCKET_NAME=$1 #"zd-ai-platform-performanceattribution-training-bucket"
-SCALE_TIER=${2:-"BASIC"} #STANDARD_1
+SCALE_TIER=${2:-"STANDARD_1"} #STANDARD_1
 
 # Fixed environment variables (DO NOT CHANGE)
 JOB_NAME="rf_training$(date +"%Y%m%d_%H%M%S")"
