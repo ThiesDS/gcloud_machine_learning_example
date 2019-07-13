@@ -2,6 +2,7 @@ import os
 import datetime
 import pandas as pd
 import numpy as np
+import json
 from google.cloud import storage
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
@@ -13,6 +14,10 @@ from sklearn.externals import joblib
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/Users/sventhies/service_accounts/sven_uses_google_vision_api.json"
 
 ## Define necessary variables
+
+# Training setup
+training_setup_env = 'notebook_instance'
+training_setup_cap = 'n1-standard-4'
 
 # Define bucket name
 bucket_id = 'zd-ai-platform-performanceattribution-training-bucket'
@@ -93,16 +98,35 @@ labels_pred = rf_randomCV.predict(features_onehot_test)
 # Calculate the mean accuracy on the given test data and labels.
 mse = mean_squared_error(labels_test, labels_pred)
 
-## Write model to gcs bucket
+## Write everything to gcs bucket
 
 # Export the model to a file
 model_filename = 'model.joblib'
 joblib.dump(rf_randomCV, model_filename)
 
+# Export metadata to a file
+metadata = {'training_setup_env': training_setup_env,
+            'training_setup_cap': training_setup_cap,
+            'training_time_min': train_time_minutes}
+json.dumps(metadata, indent=4)
+
+# Upload to GCS
+training_folder=str('job')+datetime.datetime.now().strftime('_%Y%m%d_%H%M%S')
+dataset_features_name = 'data_train_features.csv'
+dataset_labels_name = 'data_train_labels.csv'
+metadata_name = 'metadata.txt'
+
 # Upload the model to GCS
-bucket_path=job_dir+datetime.datetime.now().strftime('_%Y%m%d_%H%M%S')
-#bucket = storage.Client().bucket(bucket_id)
-blob = bucket.blob('{}/{}'.format(
-    bucket_path,
-    model_filename))
+blob = bucket.blob('{}/{}'.format(training_folder,model_filename))
 blob.upload_from_filename(model_filename)
+
+# Upload the data to GCS (for reproducability)
+blob = bucket.blob('{}/{}'.format(training_folder,dataset_features_name))
+blob.upload_from_filename(dataset_features_name)
+
+blob = bucket.blob('{}/{}'.format(training_folder,dataset_labels_name))
+blob.upload_from_filename(dataset_labels_name)
+
+# Upload the metadata to GCS
+blob = bucket.blob('{}/{}'.format(training_folder,metadata_name))
+blob.upload_from_filename(metadata_name)
